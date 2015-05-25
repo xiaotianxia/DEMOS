@@ -1,0 +1,83 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>test</title>
+</head>
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+ ul.wrapper{
+    width: 582px;
+    height: 40px;
+    margin:10px auto;
+    background-color: #520;
+    border-radius: 5px;
+ }
+ ul.wrapper li{
+    float: left;
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    margin-left:30px;
+    margin-top: 12px;
+    background-color: #aaa;
+
+ }
+ ul.wrapper li.light{
+    background-color: #ff3;
+    -webkit-box-shadow: 0 0 8px #ff0;
+    -moz-box-shadow: 0 0 8px #ff0;
+    -ms-box-shadow: 0 0 8px #ff0;
+    -o-box-shadow: 0 0 8px #ff0;
+    box-shadow: 0 0 8px #ff0;
+ }
+</style>
+</head>
+<body>
+  <ul class="wrapper" id="wrapper">
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+      <li></li>
+  </ul>
+</body>
+<script>
+    var oWrap=document.getElementById("wrapper");
+    var aLi=oWrap.getElementsByTagName("li");
+    var timer=null;
+function blink(){
+    setTimeout(oddOn, 0);
+    setTimeout(evenOn,500);
+}
+function init(){
+    for(var i=0,len=aLi.length;i<len;i++){
+        aLi[i].className="";
+    }
+}
+function oddOn(){
+    init();
+    for(var j=0,len=aLi.length;j<len;j+=2){
+        aLi[j].className="light";
+    }
+}
+function evenOn(){
+    init();
+    for(var k=1,len=aLi.length;k<len;k+=2){
+        aLi[k].className="light";
+    }
+}
+   timer=setInterval(blink,300);
+</script>
+</html>
