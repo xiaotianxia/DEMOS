@@ -54,30 +54,38 @@
   </ul>
 </body>
 <script>
+(function(){
     var oWrap=document.getElementById("wrapper");
     var aLi=oWrap.getElementsByTagName("li");
     var timer=null;
-function blink(){
-    setTimeout(oddOn, 0);
-    setTimeout(evenOn,500);
-}
-function init(){
-    for(var i=0,len=aLi.length;i<len;i++){
-        aLi[i].className="";
+    function blink(){
+        setTimeout(oddOn, 0);
+        setTimeout(evenOn,500);
     }
-}
-function oddOn(){
-    init();
-    for(var j=0,len=aLi.length;j<len;j+=2){
-        aLi[j].className="light";
+    function init(){
+        for(var i=0,len=aLi.length;i<len;i++){
+            aLi[i].className="";
+        }
     }
-}
-function evenOn(){
-    init();
-    for(var k=1,len=aLi.length;k<len;k+=2){
-        aLi[k].className="light";
+    function oddOn(){
+        init();
+        for(var j=0,len=aLi.length;j<len;j+=2){
+            aLi[j].className="light";
+        }
     }
-}
-   timer=setInterval(blink,300);
+    function evenOn(){
+        init();
+        for(var k=1,len=aLi.length;k<len;k+=2){
+            aLi[k].className="light";
+        }
+    }
+       timer=setInterval(blink,300);
+       oWrap.onmouseover=function(){
+        clearInterval(timer);
+       }
+       oWrap.onmouseout=function(){
+        timer=setInterval(blink,300);
+       }
+})();
 </script>
 </html>
