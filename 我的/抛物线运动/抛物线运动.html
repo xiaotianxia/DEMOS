@@ -1,0 +1,85 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>test</title>
+</head>
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+.h{
+  position: absolute;
+  width: 400px;
+  height: 1px;
+  background-color: #aaa;
+  top:400px;
+}
+.v{
+  position: absolute;
+  width: 1px;
+  height: 400px;
+  background-color: #aaa;
+  left:400px;
+}
+.redDot{
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  border-radius: 100%;
+  background-color: red;
+  top:400px;
+  margin-left: -20px;
+  margin-top: -20px;
+}
+</style>
+</head>
+<body>
+    <div class="h"></div>
+    <div class="v"></div>
+    <div id="dotCont"></div>
+    <div class="redDot" id="redDot"></div>
+</body>
+<script>
+   var arrX=[];
+   var arrY=[];
+   var yi;
+   var oDotCont=document.getElementById("dotCont");
+
+   for(var j=0;j<=400;j++){
+    var oDot=document.createElement("div");
+    oDot.className="dot";
+    oDot.style.position="absolute";
+    oDot.style.width="4px";
+    oDot.style.height="4px";
+    oDot.style.backgroundColor="#777";
+    oDot.style.borderRadius="100%";
+    oDotCont.appendChild(oDot);
+   }
+  var arrDot=oDotCont.getElementsByTagName("div");
+  for(var i=0;i<=400;i++){
+    yi=Math.floor(0.01*(i-200)*(i-200));
+
+    arrX.push(i);
+    arrY.push(yi);
+    arrDot[i].style.left=i+"px";
+    arrDot[i].style.top=yi+"px";
+ }
+   console.log(arrX);
+   console.log(arrY);
+
+    var m=0;
+    var iSpeed=3;
+   function fly(elem){
+    var flyElem=document.getElementById(elem);
+    flyElem.style.left=arrX[m]+"px";
+    flyElem.style.top=arrY[m]+"px";
+    m+=iSpeed;
+   }
+   setInterval(function(){
+    fly("redDot");
+   },5);
+</script>
+</html>
