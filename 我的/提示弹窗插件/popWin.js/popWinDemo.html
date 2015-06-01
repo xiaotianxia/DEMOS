@@ -1,0 +1,31 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>test</title>
+    <link rel="stylesheet" href="popWin.css" />
+</head>
+<body>
+    <button id="btn1">demo1</button>
+    <button id="btn2">demo2</button>
+    <script src="popWin.js"></script>
+    <script>
+        document.getElementById("btn1").onclick=function(){
+            popWin({
+                "title":"哈哈哈哈",
+                "infoType":"question",
+                "content":"确定吗？确定吗？？"
+            });
+        }
+        document.getElementById("btn2").onclick=function(){
+            popWin({
+                "title":"嘿嘿嘿嘿",
+                "infoType":"warning",
+                "content":"小心操作！！",
+                "isCancelBtn":false
+            });
+        }
+</script>
+</body>
+
+</html>
