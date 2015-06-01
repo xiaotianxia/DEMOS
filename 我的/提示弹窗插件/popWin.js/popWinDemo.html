@@ -4,27 +4,43 @@
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
     <title>test</title>
     <link rel="stylesheet" href="popWin.css" />
+    <script src="popWin.js"></script>
 </head>
 <body>
     <button id="btn1">demo1</button>
     <button id="btn2">demo2</button>
-    <script src="popWin.js"></script>
-    <script>
-        document.getElementById("btn1").onclick=function(){
-            popWin({
-                "title":"哈哈哈哈",
-                "infoType":"question",
-                "content":"确定吗？确定吗？？"
-            });
-        }
-        document.getElementById("btn2").onclick=function(){
-            popWin({
-                "title":"嘿嘿嘿嘿",
-                "infoType":"warning",
-                "content":"小心操作！！",
-                "isCancelBtn":false
-            });
-        }
+    <button id="btn3">demo3</button>
+    <button id="btn4">demo4</button>
+<script>
+    document.getElementById("btn1").onclick=function(){
+        popWin({
+            "title":"哈哈哈哈",
+            "infoType":"question",
+            "content":"确定吗？确定吗？？"
+        });
+    }
+    document.getElementById("btn2").onclick=function(){
+        popWin({
+            "title":"嘿嘿嘿嘿",
+            "infoType":"warning",
+            "content":"小心操作！！",
+            "isCancelBtn":false
+        });
+    }
+    document.getElementById("btn3").onclick=function(){
+        popWin({
+            "infoType":"success",
+            "isCancelBtn":true
+        });
+    }
+    document.getElementById("btn4").onclick=function(){
+        popWin({
+
+            "infoType":"error",
+            "content":"小心操作！！",
+            "isCancelBtn":false
+        });
+    }
 </script>
 </body>
 

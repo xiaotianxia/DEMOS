@@ -6,19 +6,20 @@
     <link rel="stylesheet" href="popWin.css" />
 </head>
 <body>
-    <div class="mask">
-        <div class="win">
+    <button id="btn1">demo1</button>
+    <div id="mask" class="mask" style="display:none;">
+        <div class="win" style="top:0;margin-top: 20px;">
             <div class="topCont">
                 <div class="titleDiv">
                     <p>确定吗？</p>
                 </div>
-                <div class="close">&times;</div>
+                <div id="close" class="close">&times;</div>
             </div>
             <div class="contentCont">
                 <div class="imageDiv">
-                        <div class="warining"></div>
+                        <!-- <div class="warning"></div>
                         <div class="error"></div>
-                        <div class="question"></div>
+                        <div class="question"></div> -->
                         <div class="success"></div>
                 </div>
                 <div class="content">
@@ -29,9 +30,19 @@
             </div>
             <div class="btnCont">
                 <button class="btn confirmBtn">确 定</button>
-                <button class="btn cancelBtn">取 消</button>
+                <button id="cancelBtn" class="btn cancelBtn">取 消</button>
             </div>
         </div>
     </div>
+    <script>
+    document.getElementById("btn1").onclick=function(){
+        document.getElementById("mask").style.display="block";
+    }
+    document.getElementById("close").onclick=
+    document.getElementById("cancelBtn").onclick=
+    function(){
+        document.getElementById("mask").style.display="none";
+    }
+    </script>
 </body>
 </html>
