@@ -4,6 +4,14 @@
 
 (function(window,document){
 // 函数声明区
+    function hasClass(elem, className) {
+      return new RegExp(' ' + className + ' ').test(' ' + elem.className + ' ');
+    }
+    function addClass(elem, className) {
+      if (!hasClass(elem, className)) {
+        elem.className += ' ' + className;
+      }
+    }
     function initHTML(options){
         var popWinHTML='<div class="mask"><div class="win"><div class="topCont"><div class="titleDiv"><p>'
                       +options.title
@@ -36,15 +44,43 @@
         var padding = parseInt(getComputedStyle(elem).getPropertyValue('padding'), 10);
         elem.style.marginTop=-parseInt(height / 2 + padding) + 'px';
     }
-    function openWin(elem){
-        elem.style.display="block";
+    function openWin(elem,child){
+        fadeIn(elem,20);
+        addClass(child,"showWin");
     }
-    function closeWin(elem){
-        elem.style.display="none";
-        // document.body.removeChild(elem);
+    function closeWin(elem,child){
+        fadeOut(elem,20);
+        addClass(child,"hideWin");
     }
-
-
+    function fadeIn(elem, interval) {
+      interval = interval || 16;
+      elem.style.opacity = 0;
+      elem.style.display = 'block';
+      var last = +new Date();
+      var tick = function() {
+        elem.style.opacity = +elem.style.opacity + (new Date() - last) / 100;
+        last = +new Date();
+        if(+elem.style.opacity < 1) {
+          setTimeout(tick, interval);
+        }
+      };
+      tick();
+    }
+    function fadeOut(elem, interval) {
+      interval = interval || 16;
+      elem.style.opacity = 1;
+      var last = +new Date();
+      var tick = function() {
+        elem.style.opacity = +elem.style.opacity - (new Date() - last) / 100;
+        last = +new Date();
+        if(+elem.style.opacity > 0) {
+          setTimeout(tick, interval);
+        }else {
+          elem.style.display = 'none';
+        }
+      };
+      tick();
+    }
 
 //函数调用区 
     window.popWin=function(option){
@@ -61,10 +97,11 @@
         var oWin=getElement(".win");
         var oClose=getElement(".close");
         var oCancelBtn=getElement(".cancelBtn");
-        openWin(oMask);
+        openWin(oMask,oWin);
         topCentering(oWin);
         oClose.onclick=oCancelBtn.onclick=function(){
-            closeWin(oMask);
+            closeWin(oMask,oWin);
         }
     }
+
 })(window,document);
