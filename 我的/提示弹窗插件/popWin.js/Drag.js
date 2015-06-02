@@ -13,13 +13,7 @@ Drag.prototype.fnDown=function (ev){
 	var _this=this;
 	var oEvent=ev||event;
 	this.disX=oEvent.clientX-this.oTarget.parentNode.parentNode.offsetLeft;
-	this.disY=oEvent.clientY-this.oTarget.parentNode.parentNode.offsetTop;
-	console.log(this.disX);	
-	console.log(this.disY);	
-	console.log(this.oTarget.parentNode.parentNode.offsetLeft);	
-	console.log(this.oTarget.parentNode.parentNode.offsetTop);	
-	console.log(oEvent.clientX);	
-	console.log(oEvent.clientY);		
+	this.disY=oEvent.clientY-this.oTarget.parentNode.parentNode.offsetTop;		
 	document.onmousemove=function (ev){
 		_this.fnMove(ev);
 	};	
@@ -32,6 +26,7 @@ Drag.prototype.fnMove=function (ev){
 	var oEvent=ev||event;	
 	this.oTarget.parentNode.parentNode.style.left=oEvent.clientX-this.disX+'px';
 	this.oTarget.parentNode.parentNode.style.top=oEvent.clientY-this.disY+'px';
+	console.log(oEvent.clientX);
 };
 
 Drag.prototype.fnUp=function (){
@@ -40,8 +35,8 @@ Drag.prototype.fnUp=function (){
 };
 
 //---------------限制拖动范围-----------------------
-function LimitDrag(id){
-	Drag.call(this, id);
+function LimitDrag(cls){
+	Drag.call(this, cls);
 }
 
 //LimitDrag.prototype=Drag.prototype;
