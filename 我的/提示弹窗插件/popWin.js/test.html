@@ -7,8 +7,8 @@
 </head>
 <body>
     <button id="btn1">demo1</button>
-    <div id="mask" class="mask" style="display:none;">
-        <div class="win" style="top:0;margin-top: 20px;">
+    <!-- <div id="mask" class="mask">
+        <div class="win">
             <div class="topCont">
                 <div class="titleDiv">
                     <p>确定吗？</p>
@@ -17,9 +17,6 @@
             </div>
             <div class="contentCont">
                 <div class="imageDiv">
-                        <!-- <div class="warning"></div>
-                        <div class="error"></div>
-                        <div class="question"></div> -->
                         <div class="success"></div>
                 </div>
                 <div class="content">
@@ -33,9 +30,11 @@
                 <button id="cancelBtn" class="btn cancelBtn">取 消</button>
             </div>
         </div>
-    </div>
+    </div> -->
     <script>
+    var html='<div id="mask"class="mask"><div class="win"><div class="topCont"><div class="titleDiv"><p>确定吗？</p></div><div id="close"class="close">&times;</div></div><div class="contentCont"><div class="imageDiv"><div class="success"></div></div><div class="content"><p>这里是内容。</p></div></div><div class="btnCont"><button class="btn confirmBtn">确定</button><button id="cancelBtn"class="btn cancelBtn">取消</button></div></div></div>';
     document.getElementById("btn1").onclick=function(){
+        document.body.innerHTML+=html;
         document.getElementById("mask").style.display="block";
     }
     document.getElementById("close").onclick=

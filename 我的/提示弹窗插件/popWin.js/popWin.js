@@ -32,6 +32,16 @@
         }
         return elem;
     }
+    function stopPropagation(e){
+      if (typeof e.stopPropagation === 'function') {
+        e.stopPropagation();
+        e.preventDefault();
+      } else if (window.event && window.event.hasOwnProperty('cancelBubble')) {
+        window.event.cancelBubble = true;
+        window.event.returnValue == false;
+      }
+
+    }
     function initHTML(options){
         var popWinHTML='<div class="mask"><div class="win"><div class="topCont"><div class="titleDiv"><p>'
                       +options.title
@@ -42,7 +52,9 @@
                       +'</p></div></div><div class="btnCont">'
                       +(options.isCancelBtn?'<button class="btn confirmBtn">确定</button>':'')
                       +'<button class="btn cancelBtn">取消</button></div></div></div>';
-        document.body.innerHTML+=popWinHTML;
+        var oWraper=document.createElement("div");
+        oWraper.innerHTML=popWinHTML;
+        document.body.insertBefore(oWraper, document.body.firstChild);//保证插入到script标签前面
     }
     function getElement(eleCls){
         return document.querySelector(eleCls);
@@ -93,7 +105,7 @@
         if(+elem.style.opacity > 0) {
           setTimeout(tick, interval);
         }else {
-          // elem.style.display = 'none';
+          elem.style.display = 'none';
           elem.style.opacity=0;
         }
       };
@@ -109,15 +121,17 @@
         fadeOut(elem,20);
         addClass(child,"hideWin");
         removeClass(child,"showWin");
-        // document.body.removeChild(elem);
+        document.body.removeChild(elem.parentNode);//删除节点
     }
 //函数调用区 
     window.popWin=function(option){
+        option=option||{};
         var defaults={
-            "title":"提示信息",
-            "infoType":"success",
-            "content":"提示内容",
-            "isCancelBtn":true
+            "title":"温馨提示",
+            "infoType":"",
+            "content":"*_*",
+            "isCancelBtn":true,
+            "allowOutsideClick":false
         }
         var options=defaults.extend(option);
         console.log(options);
@@ -127,9 +141,17 @@
         var oClose=getElement(".close");
         var oCancelBtn=getElement(".cancelBtn");
         openWin(oMask,oWin);
-        oClose.onclick=oCancelBtn.onclick=function(){
+        oClose.onclick=oCancelBtn.onclick=function(e){
+          stopPropagation(e);//不好使！
           closeWin(oMask,oWin);
         }
+        // if(options.allowOutsideClick){
+        //   oMask.onclick=function(){
+        //     closeWin(oMask,oWin);
+        //   }
+        // }
+        // 
+        new LimitDrag(".titleDiv");
     }
 
 })(window,document);

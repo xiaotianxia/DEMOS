@@ -39,6 +39,7 @@
     padding-left: 10px;
     font-size: 25px;
     line-height: 30px;
+    cursor: move;
 }
 .close{
     float: left;
@@ -152,8 +153,8 @@
     width: 230px;
     float:left;
     margin-left: 20px;
+    padding-left: 10px;
     position:relative;
-    text-align:center;
 }
 .content p{
     position:relative;

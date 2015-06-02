@@ -5,18 +5,20 @@
     <title>test</title>
     <link rel="stylesheet" href="popWin.css" />
     <script src="popWin.js"></script>
+    <script src="Drag.js"></script>
 </head>
 <body>
     <button id="btn1">demo1</button>
     <button id="btn2">demo2</button>
     <button id="btn3">demo3</button>
     <button id="btn4">demo4</button>
+    <button id="btn5">demo5</button>
 <script>
     document.getElementById("btn1").onclick=function(){
         popWin({
             "title":"哈哈哈哈",
             "infoType":"question",
-            "content":"确定吗？确定吗？？"
+            "content":"确定吗？确定吗确定吗？确定吗确定吗？确定吗确定吗？确定吗确定吗？确定吗？？"
         });
     }
     document.getElementById("btn2").onclick=function(){
@@ -38,8 +40,12 @@
 
             "infoType":"error",
             "content":"小心操作！！",
-            "isCancelBtn":false
+            "isCancelBtn":false,
+            "allowOutsideClick":true
         });
+    }
+    document.getElementById("btn5").onclick=function(){
+        popWin();
     }
 </script>
 </body>
