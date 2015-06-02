@@ -93,7 +93,7 @@
         if(+elem.style.opacity > 0) {
           setTimeout(tick, interval);
         }else {
-          elem.style.display = 'none';
+          // elem.style.display = 'none';
           elem.style.opacity=0;
         }
       };
