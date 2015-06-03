@@ -121,7 +121,9 @@
         fadeOut(elem,20);
         addClass(child,"hideWin");
         removeClass(child,"showWin");
-        document.body.removeChild(elem.parentNode);//删除节点
+        setTimeout(function(){
+          document.body.removeChild(elem.parentNode);//删除节点
+        }, 1000);
     }
 //函数调用区 
     window.popWin=function(option){
@@ -129,6 +131,7 @@
         var defaults={
             "title":"温馨提示",
             "infoType":"",
+            "allowDrag":true,
             "content":"*_*",
             "isCancelBtn":true,
             "allowOutsideClick":false
@@ -141,17 +144,21 @@
         var oClose=getElement(".close");
         var oCancelBtn=getElement(".cancelBtn");
         openWin(oMask,oWin);
+        oWin.onclick=function(e){
+          stopPropagation(e);
+        }
         oClose.onclick=oCancelBtn.onclick=function(e){
-          stopPropagation(e);//不好使！
           closeWin(oMask,oWin);
         }
-        // if(options.allowOutsideClick){
-        //   oMask.onclick=function(){
-        //     closeWin(oMask,oWin);
-        //   }
-        // }
-        // 
-        new LimitDrag(".titleDiv");
+        if(options.allowOutsideClick){
+          oMask.onclick=function(){
+            closeWin(oMask,oWin);
+          }
+        }
+  //-------------------拖动---------------------      
+       if(options.allowDrag){
+         new Drag(".titleDiv");
+       }
     }
 
 })(window,document);
