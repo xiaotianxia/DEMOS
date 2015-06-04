@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <title>test</title>
+    <script src="jquery-2.1.1.min.js"></script>
+    <script src="jquery.avgrund.js"></script>
+    <link rel="stylesheet" href="avgrund.css" />
+</head>
+<style type="text/css">
+* {
+    margin: 0;
+    padding: 0;
+}
+</style>
+</head>
+<body>
+    <button class="btn1">demo1</button>
+</body>
+<script>
+   $('.btn1').avgrund({
+    width: 380, // max is 640px
+    height: 280, // max is 350px
+    showClose: true, // switch to 'true' for enabling close button
+    closeByEscape: true, // enables closing popup by 'Esc'..
+    closeByDocument: true, // ..and by clicking document itself
+    enableStackAnimation: true, // another animation type
+    onBlurContainer: '', // enables blur filter for specified block
+    openOnEvent: true, // set to 'false' to init on load
+    setEvent: 'click', // use your event like 'mouseover', 'touchmove', etc.
+    onLoad: function (elem) {   }, // set custom call before popin is inited..
+    onUnload: function (elem) {  }, // ..and after it was closed
+    template: 'tfsdg' // or function (elem) { }, or $('.content')
+});
+</script>
+</html>
