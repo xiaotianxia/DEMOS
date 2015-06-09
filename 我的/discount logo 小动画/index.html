@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script type="text/javascript" src="jquery-2.1.1.min.js"></script>
+</head>
+<style type="text/css">
+*{
+    font: 30px "Microsoft YaHei";
+    box-sizing: border-box;
+}
+.wraper{
+    width: 90%;
+    margin:20px auto;
+}
+.badge {
+    position: absolute;
+    background: #F5345E;
+    width: 80px;
+    height: 80px;
+    top:-30px;
+    left:-30px;
+    line-height: 80px;
+    text-align: center;
+    display: none;
+    cursor: pointer;
+    z-index: 1000;
+    -webkit-transform: scale(.5); 
+}
+.badge:before, .badge:after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 80px;
+    width: 80px;
+    background: #F5345E;
+    z-index: -1;
+}
+.badge:before {
+    -webkit-transform: rotate(30deg);
+    -moz-transform: rotate(30deg);
+    -ms-transform: rotate(30deg);
+    -o-transform: rotate(30deg);
+    transform: rotate(30deg);
+}
+.badge:after {
+    -webkit-transform: rotate(60deg);
+    -moz-transform: rotate(60deg);
+    -ms-transform: rotate(60deg);
+    -o-transform: rotate(60deg);
+    transform: rotate(60deg);
+}
+.product{
+    position: relative;
+    float: left;
+    background-size: cover;
+    margin:20px;
+    width: 200px;
+    height:200px;
+    background-color: #aaa;
+}
+.badgeShow{
+    -webkit-animation:show .5s;
+    display: block;
+}
+@-webkit-keyframes show{
+    0%{
+    opacity: 0;
+    -webkit-transform:scale(2) rotate(120deg); 
+    }
+    100%{
+    opacity: 1;
+    -webkit-transform: scale(.5); 
+    }
+}
+</style>
+<body>
+    <div class="wraper">
+        <!-- <div class="badge"></div> -->
+        <div class="product" data-discount="50%" style="background-image:url(img/1.jpg)">
+            <div class="badge"></div>
+        </div>
+        <div class="product" data-discount="30%" style="background-image:url(img/2.jpg)">
+            <div class="badge"></div>
+        </div>
+        <div class="product" data-discount="20%" style="background-image:url(img/3.jpg)">
+            <div class="badge"></div>
+        </div>
+        <div class="product" data-discount="58%" style="background-image:url(img/4.jpg)">
+            <div class="badge"></div>
+        </div>
+        <div class="product" data-discount="60%" style="background-image:url(img/5.jpg)">
+            <div class="badge"></div>
+        </div>
+        <div class="product" data-discount="80%" style="background-image:url(img/1.jpg)">
+            <div class="badge"></div>
+        </div>
+    </div>
+    
+
+<script type="text/javascript">
+    $(function(){
+        var $product=$(".product");
+        $product.mouseenter(function(){
+            var text=$(this).data("discount");
+            var img=$(this).data("img");
+            var $badge=$(this).find(".badge");
+            var randColor="#"+(~~(Math.random()*(1<<24))).toString(16);
+            $(this).css({
+                "boxShadow":"0 0 2px 2px "+randColor,
+                "background":"img/"+img
+            });
+            $badge.html(text)
+                  .addClass("badgeShow");
+            $(".badgeShow").css({
+                "color":randColor
+            });
+
+                  
+        })
+        .mouseleave(function(){
+            var $badge=$(this).find(".badge");
+            $badge.removeClass("badgeShow")
+            $(this).css({
+                    "boxShadow":"none"
+                  })
+        })
+    })
+</script>
+</body>
+</html>
