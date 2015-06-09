@@ -5,11 +5,46 @@
     <title>menu</title>
 </head>
 <style type="text/css">
+*{
+    margin:0;
+    padding: 0;
+    list-style: none;
+}
+ul li a{
+    display: inline-block;
+    width: 200px;
+    cursor: pointer;
+    text-align: center;
+    text-decoration:none;
+    background:#51CBEE;
+    color:#000;
+    margin:2px;
+    padding: 10px;
+    font:20px '微软雅黑';
+    border-radius:5px;  
+    -webkit-transition:all ease-in-out 0.5s;
+    -moz-transition:all ease-in-out 0.5s;
+    -ms-transition:all ease-in-out 0.5s;
+    -o-transition:all ease-in-out 0.5s;
+    transition:all ease-in-out 0.5s;
+}
+ul li a:hover{
+    background:#279ABB;
+    width: 250px;
+    margin-left: 10px;
+}
+ul li a.menu{
+    background:#E44B23;
+    width: 200px;
+    margin:2px;
+    padding: 10px;
+}
 </style>
 </head>
 <body>
     <div id="wraper">
       <ul>
+        <li><a class="menu" href="#">Menu</a></li>
         <li><a target="_blank" href="discount logo 小动画/index.html">discount logo 小动画</a></li>
         <li><a target="_blank" href="heartBeat/index.html">心跳</a></li>
         <li><a target="_blank" href="一串灯闪亮效果/index.html">一串灯闪亮效果</a></li>
