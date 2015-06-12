@@ -5,17 +5,16 @@
     box-sizing: border-box;
 }
 .wraper{
-    width: 400px;
-    height: 300px;
-    border:1px solid #aaa;
-    margin:20px auto;
-    padding: 10px 0 10px 0;
+    width: 320px;
+    height: 280px;
+    border:2px dotted #aaa;
+    margin:100px auto;
 }
 .ninePicBox{
-    width: 280px;
-    height:280px;
-    margin:0 auto;
+    margin:0 auto; 
     overflow: hidden;
+    margin-left: 30px;
+    margin-top: 8px;
 }
 .ninePicBox li img{
     width: 80px;
@@ -87,7 +86,6 @@
     -o-transform:translate(-50%,-50%);
     transform:translate(-50%,-50%);
 }
-
 .imgShadow{
     border:5px solid #efefef;
     background:#fff;
@@ -112,11 +110,94 @@
         opacity: 0;
     }
 }
+@-moz-keyframes shrink{
+    0%{
+        transform:scale(1.4);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-ms-keyframes shrink{
+    0%{
+        transform:scale(1.4);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@-o-keyframes shrink{
+    0%{
+        transform:scale(1.4);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+@keyframes shrink{
+    0%{
+        transform:scale(1.4);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
 .shrink{
     animation:shrink .5s ease-in-out;
 }
-
 @-webkit-keyframes show{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@-moz-keyframes show{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@-ms-keyframes show{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@-o-keyframes show{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+@keyframes show{
     0%{
         opacity: 0;
     }
@@ -130,4 +211,34 @@
 }
 .show{
     animation:show .5s ease-in-out;
+}
+.preview{
+    position: absolute;
+    bottom: 20px;
+    z-index: 2000;
+    width: 800px;
+    height: 90px;
+    left: 50%;
+    transform:translateX(-50%);
+}
+.preview ul{
+    position: absolute;
+    left: 50%;
+    transform:translateX(-50%);
+    width: 800px;
+    height: 90px;
+}
+.preview ul li{
+    width: 88px;
+    height: 88px;
+    float: left;
+    border:4px solid #fff;
+    cursor: pointer;
+}
+.preview ul li:hover{
+    border:4px solid red;
+}
+.preview ul li img{
+    width: 80px;
+    height: 80px;
 }

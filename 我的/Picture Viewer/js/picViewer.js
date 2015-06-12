@@ -11,7 +11,9 @@ $(function(){
     smallPicStr+=smallPicArr.join("");
     smallPicStr+='';
     var $ninePicBox=$(".ninePicBox");
-    $(smallPicStr).appendTo($ninePicBox);
+    var $listCont=$(".listCont");
+    $(smallPicStr).appendTo($ninePicBox);//九宫格小图
+    $(smallPicStr).appendTo($listCont);//横排预览图
     var $mask=$(".mask");
     function close(ele){
         ele.addClass("shrink");
@@ -57,11 +59,19 @@ $(function(){
     $(".close,.imgBox,.mid").click(function(){
         close($mask);
     });
+    //九宫格
     $(".ninePicBox").on("click",function(e){
         src=e.target.src;//全局
         curImgId=$(e.target).attr("id");
         show($mask);
         $(".imgCur").attr("src",src);
+    });
+    //9图预览
+    $(".preview").on("click",function(e){
+        var curId=$(e.target).attr("id");
+        var curSrc=$("#"+curId).attr("src");
+        console.log(curSrc);
+        $(".imgCur").attr("src",curSrc);
     });
     //next
     $(".right").click(function(){
