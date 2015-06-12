@@ -29,7 +29,28 @@ $(function(){
            })
         }, 100);
     }
-
+    function checkNO(m){
+        if(m>9){
+            m=1;
+        }
+        if(m<1){
+            m=9;
+        }
+        return m;
+    }
+    function shift(flag){
+        var num=parseInt(curImgId.substr(-1));
+        if(flag=="next"){
+            num=checkNO(num+1);      
+        }
+        else if(flag=="prev"){
+            num=checkNO(num-1);      
+        }
+        nextImgId=curImgId.substr(0,5)+num;
+        console.log(nextImgId);
+        curImgId=nextImgId;
+        $(".imgCur").attr("src",$("#"+nextImgId).attr("src"));
+    }
 
 
 
@@ -42,13 +63,12 @@ $(function(){
         show($mask);
         $(".imgCur").attr("src",src);
     });
+    //next
     $(".right").click(function(){
-        var nextImgId=curImgId.substr(0,5)+(parseInt(curImgId.substr(-1))+1);
-        curImgId=nextImgId;
-        console.log(nextImgId);
-        $(".imgCur").attr("src",$("#"+nextImgId).attr("src"));
+        shift("next");
     });
+    //prev
     $(".left").click(function(){
-
+        shift("prev");
     });
 })

@@ -6,7 +6,7 @@ imgData=[
         "imgName":"2.jpg"
     },
     {
-        "imgName":"3.jpg"
+        "imgName":"wer.jpg"
     },
     {
         "imgName":"4.jpg"
