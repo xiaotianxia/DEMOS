@@ -1,0 +1,133 @@
+*{
+    margin:0;
+    padding: 0;
+    list-style: none;
+    box-sizing: border-box;
+}
+.wraper{
+    width: 400px;
+    height: 300px;
+    border:1px solid #aaa;
+    margin:20px auto;
+    padding: 10px 0 10px 0;
+}
+.ninePicBox{
+    width: 280px;
+    height:280px;
+    margin:0 auto;
+    overflow: hidden;
+}
+.ninePicBox li img{
+    width: 80px;
+    height:80px;
+    float: left;
+    margin-right: 10px;
+    margin-bottom: 10px;
+    cursor: url(img/cur/big.cur),auto;
+}
+.mask{
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    top:0;
+    display: none;
+    background-color: rgba(0,0,0,0.4);
+    overflow: hidden;
+    z-index: 998;
+}
+.close{
+    position: absolute;
+    right: 0;
+    font: 60px bold;
+    color:#aaa;
+    cursor: pointer;
+    transition:all .1s linear;
+}
+.close:hover{
+    transform:rotate(180deg);
+    color:#fff;
+}
+.transparent{
+    width: 33.33%;
+    height: 100%;
+    float: left;
+    z-index: 1000;
+    background-color: rgba(0,0,0,0.4);
+
+}
+.left{
+    cursor: url(img/cur/pic_prev.cur),auto;
+}
+.mid{
+    cursor: url(img/cur/small.cur),auto;
+}
+.right{
+    cursor: url(img/cur/pic_next.cur),auto;
+}
+.imgBox{
+    position: absolute;
+    z-index: 999;
+    width: 600px;
+    height: 500px;
+    cursor: url(img/cur/small.cur),auto;
+    left: 50%;
+    top:50%;
+    margin-left: -300px;
+    margin-top: -250px;
+}
+.imgBox img{
+    position: absolute;
+    left: 50%;
+    top:50%;
+    border:5px #fff solid;
+    -webkit-transform:translate(-50%,-50%);
+    -moz-transform:translate(-50%,-50%);
+    -ms-transform:translate(-50%,-50%);
+    -o-transform:translate(-50%,-50%);
+    transform:translate(-50%,-50%);
+}
+
+.imgShadow{
+    border:5px solid #efefef;
+    background:#fff;
+    position:relative;
+    -webkit-box-shadow: 0 1px 4px rgba(0,0,0,0.3),
+                0 0 60px rgba(0,0,0,0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0,0,0,0.3),
+                0 0 60px rgba(0,0,0,0.1) inset;
+    -ms-box-shadow: 0 1px 4px rgba(0,0,0,0.3),
+                0 0 60px rgba(0,0,0,0.1) inset;
+    -o-box-shadow: 0 1px 4px rgba(0,0,0,0.3),
+                0 0 60px rgba(0,0,0,0.1) inset;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.3),
+                0 0 60px rgba(0,0,0,0.1) inset;            
+}
+@-webkit-keyframes shrink{
+    0%{
+        transform:scale(1.4);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 0;
+    }
+}
+.shrink{
+    animation:shrink .5s ease-in-out;
+}
+
+@-webkit-keyframes show{
+    0%{
+        opacity: 0;
+    }
+    50%{
+        transform:scale(1.2);
+        opacity: 0.8;
+    }
+    100%{
+        opacity: 1;
+    }
+}
+.show{
+    animation:show .5s ease-in-out;
+}

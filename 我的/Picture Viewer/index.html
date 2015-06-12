@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>pictureviewer</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="js/jquery-2.1.1.min.js"></script>
+    <script src="js/imgData.js"></script>
+    <script src="js/picViewer.js"></script>
+</head>
+<body>
+    <!-- 九宫格 -->
+    <div class="wraper">
+        <ul class="ninePicBox">
+            <!-- js生成ul>li>img*9 -->
+        </ul>
+    </div>
+    <!-- 九宫格end -->
+
+    <!-- big Pictures -->
+    <div class="mask">
+        <div class="imgBox">
+            <!-- img -->
+            <img class="imgCur imgShadow">
+        </div>
+        <div class="close">&times;</div>
+        <div class="transparent left"></div>
+        <div class="transparent mid"></div>
+        <div class="transparent right"></div>
+    </div>
+    <!-- big Pictures end -->
+</body>
+</html>
