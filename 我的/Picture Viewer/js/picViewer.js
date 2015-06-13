@@ -1,21 +1,24 @@
 //生成九宫格
 $(function(){
-    var smallPicStr='';
-    var smallPicArr=[];
+    var $mask=$(".mask");    
     var len=imgData.length;//图片个数
-    for(var i=0;i<len;i++){
+    
+    function init(){
+        var $ninePicBox=$(".ninePicBox");
+        var $listCont=$(".listCont");
+        var smallPicStr='';
+        var smallPicArr=[];
+        for(var i=0;i<len;i++){
         var fragStr='<li><img class="smallPic" src="img/pic/'
                    +imgData[i].imgName+'" id="imgNO'
                    +(i+1)+'"/></li>';
         smallPicArr.push(fragStr);
+        }
+        smallPicStr+=smallPicArr.join("");
+        smallPicStr+='';
+        $(smallPicStr).appendTo($ninePicBox);//九宫格小图
+        $(smallPicStr).appendTo($listCont);//横排预览图
     }
-    smallPicStr+=smallPicArr.join("");
-    smallPicStr+='';
-    var $ninePicBox=$(".ninePicBox");
-    var $listCont=$(".listCont");
-    $(smallPicStr).appendTo($ninePicBox);//九宫格小图
-    $(smallPicStr).appendTo($listCont);//横排预览图
-    var $mask=$(".mask");
     function close(ele){
         ele.addClass("shrink");
         setTimeout(function(){
@@ -67,7 +70,7 @@ $(function(){
         });
     }
 
-
+    init();
     $(".close,.imgBox,.mid").click(function(){
         close($mask);
     });
