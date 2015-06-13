@@ -6,7 +6,7 @@
 }
 .wraper{
     width: 320px;
-    height: 280px;
+    min-height: 100px;
     border:2px dotted #aaa;
     margin:100px auto;
 }
@@ -30,7 +30,7 @@
     height: 100%;
     left: 0;
     top:0;
-    display: none;
+    display:none;
     background-color: rgba(0,0,0,0.4);
     overflow: hidden;
     z-index: 998;
@@ -73,7 +73,7 @@
     left: 50%;
     top:50%;
     margin-left: -300px;
-    margin-top: -250px;
+    margin-top: -300px;
 }
 .imgBox img{
     position: absolute;
@@ -214,19 +214,20 @@
 }
 .preview{
     position: absolute;
-    bottom: 20px;
     z-index: 2000;
-    width: 800px;
+    bottom:40px;
+    width: 2200px;
     height: 90px;
     left: 50%;
     transform:translateX(-50%);
+}
+.previewShow{
+    animation:previewShow 1.5s ease-in-out;
 }
 .preview ul{
     position: absolute;
     left: 50%;
     transform:translateX(-50%);
-    width: 800px;
-    height: 90px;
 }
 .preview ul li{
     width: 88px;
@@ -241,4 +242,59 @@
 .preview ul li img{
     width: 80px;
     height: 80px;
+}
+@-webkit-keyframes previewShow{
+    0%{
+        bottom:-100px;
+    }
+    50%{
+        bottom:60px;
+    }
+    100%{
+        bottom:40px;
+    }
+}
+@-moz-keyframes previewShow{
+    0%{
+        bottom:-100px;
+    }
+    50%{
+        bottom:60px;
+    }
+    100%{
+        bottom:40px;
+    }
+}
+@-ms-keyframes previewShow{
+    0%{
+        bottom:-100px;
+    }
+    50%{
+        bottom:60px;
+    }
+    100%{
+        bottom:40px;
+    }
+}
+@-o-keyframes previewShow{
+    0%{
+        bottom:-100px;
+    }
+    50%{
+        bottom:60px;
+    }
+    100%{
+        bottom:40px;
+    }
+}
+@keyframes previewShow{
+    0%{
+        bottom:-100px;
+    }
+    50%{
+        bottom:60px;
+    }
+    100%{
+        bottom:40px;
+    }
 }

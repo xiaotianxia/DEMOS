@@ -2,7 +2,8 @@
 $(function(){
     var smallPicStr='';
     var smallPicArr=[];
-    for(var i=0,len=imgData.length;i<len;i++){
+    var len=imgData.length;//图片个数
+    for(var i=0;i<len;i++){
         var fragStr='<li><img class="smallPic" src="img/pic/'
                    +imgData[i].imgName+'" id="imgNO'
                    +(i+1)+'"/></li>';
@@ -31,53 +32,71 @@ $(function(){
            })
         }, 100);
     }
-    function checkNO(m){
-        if(m>9){
+    //循环
+    function checkNO(m,n){
+        if(m>n){
             m=1;
         }
         if(m<1){
-            m=9;
+            m=n;
         }
         return m;
     }
+    //-------------------换图-------------------------------
     function shift(flag){
         var num=parseInt(curImgId.substr(-1));
         if(flag=="next"){
-            num=checkNO(num+1);      
+            num=checkNO(num+1,len);      
         }
         else if(flag=="prev"){
-            num=checkNO(num-1);      
+            num=checkNO(num-1,len);      
         }
         nextImgId=curImgId.substr(0,5)+num;
         console.log(nextImgId);
         curImgId=nextImgId;
         $(".imgCur").attr("src",$("#"+nextImgId).attr("src"));
+        $(".imgCur").attr("id",curImgId);
+        activeChane(curImgId);
     }
-
+    function activeChane(id){
+        $(".preview ul li #"+id).parents("li").css({
+            "border":"4px solid red"
+        });
+        $(".preview ul li #"+id).parents("li").siblings().css({
+            "border":"4px solid #fff"
+        });
+    }
 
 
     $(".close,.imgBox,.mid").click(function(){
         close($mask);
     });
-    //九宫格
+    //---------------------九宫格-----------------------------
     $(".ninePicBox").on("click",function(e){
         src=e.target.src;//全局
         curImgId=$(e.target).attr("id");
+        var curId=$(e.target).attr("id");
         show($mask);
+        $(".preview").addClass("previewShow");
         $(".imgCur").attr("src",src);
+        activeChane(curId);
     });
-    //9图预览
+    //---------------------9图预览-----------------------------
     $(".preview").on("click",function(e){
         var curId=$(e.target).attr("id");
         var curSrc=$("#"+curId).attr("src");
-        console.log(curSrc);
+        console.log(curId);
         $(".imgCur").attr("src",curSrc);
+        $(".preview ul li").css({
+            "border":"4px solid #fff"
+        });
+        activeChane(curId);
     });
-    //next
+    //---------------------next-----------------------------
     $(".right").click(function(){
         shift("next");
     });
-    //prev
+    //---------------------prev-----------------------------
     $(".left").click(function(){
         shift("prev");
     });
