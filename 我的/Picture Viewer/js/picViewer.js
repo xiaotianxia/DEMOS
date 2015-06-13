@@ -56,12 +56,13 @@ $(function(){
         }
         nextImgId=curImgId.substr(0,5)+num;
         console.log(nextImgId);
-        curImgId=nextImgId;
+        curImgId=nextImgId;//id变换
         $(".imgCur").attr("src",$("#"+nextImgId).attr("src"));
         $(".imgCur").attr("id",curImgId);
-        activeChane(curImgId);
+        activeChange(curImgId);
     }
-    function activeChane(id){
+    //-----------------预览图激活状态-----------------------------
+    function activeChange(id){
         $(".preview ul li #"+id).parents("li").css({
             "border":"4px solid red"
         });
@@ -69,31 +70,31 @@ $(function(){
             "border":"4px solid #fff"
         });
     }
-
+//=================================================================
     init();
+    //----------------------关闭-------------------------------
     $(".close,.imgBox,.mid").click(function(){
         close($mask);
     });
     //---------------------九宫格-----------------------------
     $(".ninePicBox").on("click",function(e){
-        src=e.target.src;//全局
-        curImgId=$(e.target).attr("id");
-        var curId=$(e.target).attr("id");
+        var src=e.target.src;
+        curImgId=$(e.target).attr("id");//获取当前图的id
         show($mask);
         $(".preview").addClass("previewShow");
         $(".imgCur").attr("src",src);
-        activeChane(curId);
+        activeChange(curImgId);
     });
     //---------------------9图预览-----------------------------
     $(".preview").on("click",function(e){
-        var curId=$(e.target).attr("id");
-        var curSrc=$("#"+curId).attr("src");
-        console.log(curId);
+        curImgId=$(e.target).attr("id");//获取当前图的id
+        var curSrc=$("#"+curImgId).attr("src");
+        console.log(curImgId);
         $(".imgCur").attr("src",curSrc);
         $(".preview ul li").css({
             "border":"4px solid #fff"
         });
-        activeChane(curId);
+        activeChange(curImgId);
     });
     //---------------------next-----------------------------
     $(".right").click(function(){
