@@ -21,17 +21,16 @@ ul li a{
     text-decoration:none;
     background:#51CBEE;
     color:#000;
-    margin:2px;
     padding: 10px;
     font:20px '微软雅黑';
-    border-radius:5px;  
+    border-bottom: 1px solid rgba(0,0,0,.2);
     -webkit-transition:all ease-in-out 0.5s;
     -moz-transition:all ease-in-out 0.5s;
     -ms-transition:all ease-in-out 0.5s;
     -o-transition:all ease-in-out 0.5s;
     transition:all ease-in-out 0.5s;
 }
-ul li a:hover{
+ul li a:hover:not(.menu){
     background:#279ABB;
     width: 300px;
     margin-left: 20px;
@@ -39,9 +38,6 @@ ul li a:hover{
 }
 ul li a.menu{
     background:#E44B23;
-    width: 250px;
-    margin:2px;
-    padding: 10px;
 }
 </style>
 </head>
