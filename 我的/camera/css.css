@@ -1,0 +1,59 @@
+.camera{
+    position: relative;
+    margin:100px 100px;
+    width: 150px;
+    height: 100px;
+    border-radius: 10px;
+    background-color: #eee;
+    box-shadow: 0 0 2px 2px #000;
+}
+.camera:before{ /*框*/
+    content:"";
+    position: absolute;
+    top:15%;
+    height:70%;
+    width: 100%;
+    display: block;
+    background-color: #aaa;
+}
+.camera:after{  /*镜头*/
+    content:"";
+    position: absolute;
+    top:15%;
+    left:50%;
+    margin-left: -35px;
+    height:70%;
+    width: 70px;
+    display: block;
+    border:solid #eee 4px;
+    box-sizing: border-box;
+    border-radius: 50%;
+    background-color: #000;
+}
+.camera .button{
+    position: absolute;
+    top:-5px;
+    left:15px;
+    width: 15px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    z-index: -1;
+}
+.camera .light{
+    position: absolute;
+    top:5px;
+    width: 5px;
+    height:5px;
+    border-radius: 50%;
+}
+.camera .l1{
+    background-color: red;
+    right: 20px;
+    box-shadow: 0 0 1px red;
+}
+.camera .l2{
+    background-color: green;
+    right: 10px;
+    box-shadow: 0 0 1px green;
+}
